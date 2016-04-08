@@ -9,11 +9,11 @@
 import Foundation
 
 public struct Settings{
-    var speed           = 4 // from 1 till 10
-    var bestScore       = 0
-    var difficultyLvl   = 1 // from 1 till 5
-    let heightOfBoard   = 40
-    let widthOfBoard    = 20
+    static var speed           = 4 // from 1 till 10
+    static var bestScore       = 0
+    static var difficultyLvl   = 1 // from 1 till 5
+    static let heightOfBoard   = 40
+    static let widthOfBoard    = 20
 }
 class SnakeGame {
     
