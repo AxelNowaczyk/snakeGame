@@ -14,6 +14,7 @@
 		7A14F59E1CB6ED9B00778760 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A14F59C1CB6ED9B00778760 /* LaunchScreen.storyboard */; };
 		7A14F5A61CB6EDCD00778760 /* SnakeGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A14F5A51CB6EDCD00778760 /* SnakeGame.swift */; };
 		7A14F5A81CB6F8BD00778760 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A14F5A71CB6F8BD00778760 /* ViewController.swift */; };
+		7A1687F51CB7DEB30081CBBF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1687F41CB7DEB30081CBBF /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		7A14F59F1CB6ED9B00778760 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A14F5A51CB6EDCD00778760 /* SnakeGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnakeGame.swift; sourceTree = "<group>"; };
 		7A14F5A71CB6F8BD00778760 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7A1687F41CB7DEB30081CBBF /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				7A14F5931CB6ED9B00778760 /* AppDelegate.swift */,
 				7A14F5951CB6ED9B00778760 /* GameViewController.swift */,
 				7A14F5A71CB6F8BD00778760 /* ViewController.swift */,
+				7A1687F41CB7DEB30081CBBF /* SettingsViewController.swift */,
 				7A14F5A51CB6EDCD00778760 /* SnakeGame.swift */,
 				7A14F5971CB6ED9B00778760 /* Main.storyboard */,
 				7A14F59A1CB6ED9B00778760 /* Assets.xcassets */,
@@ -144,6 +147,7 @@
 				7A14F5A61CB6EDCD00778760 /* SnakeGame.swift in Sources */,
 				7A14F5961CB6ED9B00778760 /* GameViewController.swift in Sources */,
 				7A14F5A81CB6F8BD00778760 /* ViewController.swift in Sources */,
+				7A1687F51CB7DEB30081CBBF /* SettingsViewController.swift in Sources */,
 				7A14F5941CB6ED9B00778760 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
