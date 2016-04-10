@@ -11,7 +11,7 @@ import Foundation
 public struct Settings{
     static var speed           = 4 // range <0;10>
     static var bestScore       = -1
-    static var difficultyLvl   = 1 // range <0;5>
+    static var difficultyLvl   = 0 // range <0;5>
     static let heightOfBoard   = 40
     static let widthOfBoard    = 20
     static let foodAddingTime  = 20
