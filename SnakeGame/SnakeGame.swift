@@ -10,12 +10,42 @@ import Foundation
 
 public struct Settings{
     static var speed           = 4 // range <0;10>
-    static var bestScore       = 0
+    static var bestScore       = -1
     static var difficultyLvl   = 1 // range <0;5>
     static let heightOfBoard   = 40
     static let widthOfBoard    = 20
     static let foodAddingTime  = 20
+    public enum Saveable: String{
+        case Speed = "speed"
+        case BestScore = "bestScore"
+        case DiffLvl = "difficultyLvl"
+    }
+    static func save(what: Saveable){
+        let ud = NSUserDefaults.standardUserDefaults()
+        switch what {
+        case .Speed:
+            ud.setValue("\(Settings.speed)", forKey: Saveable.Speed.rawValue)
+        case .BestScore:
+            ud.setValue("\(Settings.bestScore)", forKey: Saveable.BestScore.rawValue)
+        case .DiffLvl:
+            ud.setValue("\(Settings.difficultyLvl)", forKey: Saveable.DiffLvl.rawValue)
+        }
+    }
+    static func load(){
+        let ud = NSUserDefaults.standardUserDefaults()
+
+        if let speed = ud.stringForKey(Saveable.Speed.rawValue){
+            Settings.speed = Int(speed)!
+        }
+        if let bestScore = ud.stringForKey(Saveable.BestScore.rawValue){
+            Settings.bestScore = Int(bestScore)!
+        }
+        if let diffLvl = ud.stringForKey(Saveable.DiffLvl.rawValue){
+            Settings.difficultyLvl = Int(diffLvl)!
+        }
+    }
 }
+
 public enum Direction: Int{
     case North
     case West
@@ -33,55 +63,57 @@ public enum Site{
     case Right
     case Left
 }
-
-class SnakeGame {
-    private var moveCounter = 0
-    var shape = [(Int,Int)]()
-    var food = [(Int,Int)]()
-    var dirOfMovement = Direction.North
-    var score = 0
-    init(){
-        shape.append((Settings.widthOfBoard/2,Settings.heightOfBoard/2-1))
-        shape.append((Settings.widthOfBoard/2,Settings.heightOfBoard/2))
-        shape.append((Settings.widthOfBoard/2,Settings.heightOfBoard/2+1))
+class Square: Equatable{
+    let x:Int
+    let y:Int
+    init(x:Int,y:Int){
+        self.x = x
+        self.y = y
     }
-    var snakeBitesHimself: Bool{
+}
+func ==(lhs: Square,rhs: Square) -> Bool{
+    if lhs.x == rhs.x && lhs.y == rhs.y{
+        return true
+    }
+    return false
+}
+class Snake{
+    var dirOfMovement = Direction.North
+    var shape = [Square]()
+    init(){
+        shape.append(Square(x: Settings.widthOfBoard/2,y: Settings.heightOfBoard/2-1))
+        shape.append(Square(x: Settings.widthOfBoard/2,y: Settings.heightOfBoard/2))
+        shape.append(Square(x: Settings.widthOfBoard/2,y: Settings.heightOfBoard/2+1))
+    }
+    var bitesHimself: Bool{
         for shp in 0..<shape.count{
             for shp2 in (shp+1)..<shape.count{
-                if shape[shp].0 == shape[shp2].0 && shape[shp].1 == shape[shp2].1 {
+                if shape[shp].x == shape[shp2].x && shape[shp].y == shape[shp2].y {
                     return true
                 }
             }
         }
         return false
     }
-    func move(){
-        addFood()
-        moveSnake(detectCollisions())
-    }
-    private func moveSnake(collision: Bool){
+    func move(collision: Bool, inout foodOnBoard: FoodOnBoard){
         let first = shape.first!
-        var newElement: (Int,Int)
+        var newElement: Square
         switch dirOfMovement {
         case .North:
-            newElement.0 = first.0
-            newElement.1 = (first.1-1).mod(Settings.heightOfBoard)
+            newElement = Square(x: first.x,y: (first.y-1).mod(Settings.heightOfBoard))
         case .South:
-            newElement.0 = first.0
-            newElement.1 = (first.1+1).mod(Settings.heightOfBoard)
+            newElement = Square(x: first.x,y: (first.y+1).mod(Settings.heightOfBoard))
         case .West:
-            newElement.0 = (first.0-1).mod(Settings.widthOfBoard)
-            newElement.1 = first.1
+            newElement = Square(x: (first.x-1).mod(Settings.widthOfBoard),y: first.y)
         case .East:
-            newElement.0 = (first.0+1).mod(Settings.widthOfBoard)
-            newElement.1 = first.1
+            newElement = Square(x: (first.x+1).mod(Settings.widthOfBoard),y: first.y)
         }
         if !collision {
             shape.removeLast()
         } else {
-            for index in 0..<food.count{
-                if food[index].0 == shape[0].0 && food[index].1 == shape[0].1{
-                    food.removeAtIndex(index)
+            for index in 0..<foodOnBoard.food.count{
+                if foodOnBoard.food[index].x == shape[0].x && foodOnBoard.food[index].y == shape[0].y{
+                    foodOnBoard.food.removeAtIndex(index)
                     break
                 }
             }
@@ -96,41 +128,66 @@ class SnakeGame {
             dirOfMovement = Direction(rawValue: (dirOfMovement.hashValue+1).mod(Direction.count))!
         }
     }
-    private func addFood(){
+    func hasBodyOn(square:Square) -> Bool {
+        return shape.contains(square)
+    }
+}
+class FoodOnBoard{
+    var food = [Square]()
+    private var moveCounter = 0
+    func addFood(snake: Snake){
         if moveCounter >= Settings.foodAddingTime {
             moveCounter = 0
-            addFoodToArr()
+            addFoodToArr(snake)
         }
         moveCounter += 1
     }
-    private func addFoodToArr(){
-        var possition: (Int,Int)
+    private func addFoodToArr(snake: Snake){
+        var possition: Square
         repeat{
-            possition.0 = Int(arc4random_uniform(UInt32(Settings.widthOfBoard)))
-            possition.1 = Int(arc4random_uniform(UInt32(Settings.heightOfBoard)))
-        } while shapeContains(possition)
+            possition = Square(x: Int(arc4random_uniform(UInt32(Settings.widthOfBoard))),
+                               y: Int(arc4random_uniform(UInt32(Settings.heightOfBoard))))
+
+        } while snake.hasBodyOn(possition)
         food.append(possition)
     }
-    /*
-        because tuple is not equatable and i want to compare tuples (Int,Int)
-     */
-    private func shapeContains(possition: (Int,Int)) -> Bool {
-        for index in shape{
-            if index.0 == possition.0 && index.1 == possition.1{
+    private func detectCollisions(snake: Snake) -> Bool{
+        for index in 0..<food.count{
+            if food[index].x == snake.shape[0].x && food[index].y == snake.shape[0].y{
+                SnakeGame.score += 1
                 return true
             }
         }
         return false
     }
-    private func detectCollisions() -> Bool{
-        for index in 0..<food.count{
-            if food[index].0 == shape[0].0 && food[index].1 == shape[0].1{
-                score += 1
-                return true
-            }
-        }
-        return false
-    }// think about adding 2 classes with food and snake
+}
+class SnakeGame {
+    static var score = 0
+    
+    private var snake = Snake()
+    private var foodOnBoard = FoodOnBoard()
+    var snakeBitesHimself: Bool{
+        return snake.bitesHimself
+    }
+    var foodCount: Int{
+        return foodOnBoard.food.count
+    }
+    var snakeShapeCount: Int{
+        return snake.shape.count
+    }
+    func getFood(index: Int) -> Square{
+        return foodOnBoard.food[index]
+    }
+    func getSnakeShape(index: Int) -> Square{
+        return snake.shape[index]
+    }
+    func move(){
+        foodOnBoard.addFood(snake)
+        snake.move(foodOnBoard.detectCollisions(snake), foodOnBoard: &foodOnBoard)
+    }
+    func turn(site: Site){
+        snake.turn(site)
+    }
 }
 
 

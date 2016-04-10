@@ -24,7 +24,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="N8R-Kv-3le" kind="show" id="vaF-da-jch"/>
+                                    <segue destination="N8R-Kv-3le" kind="show" identifier="" id="vaF-da-jch"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h7N-s1-6QK">
@@ -100,7 +100,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <color key="barTintColor" red="0.020927422519999999" green="0.64786485599999999" blue="0.025333383540000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
-                                    <navigationItem title="Settings" id="wAS-mP-Hx8">
+                                    <navigationItem id="wAS-mP-Hx8">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="Ke3-OD-5PE">
                                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
@@ -131,25 +131,25 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Best Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNo-HF-w33">
                                 <rect key="frame" x="239" y="256" width="84" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Difficulty level" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ut-df-Nto">
                                 <rect key="frame" x="142" y="285" width="108" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u7c-jH-ubu">
                                 <rect key="frame" x="171" y="323" width="50" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xw9-eY-bQr">
                                 <rect key="frame" x="331" y="256" width="11" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="5Md-b8-B3z">
@@ -257,10 +257,12 @@
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="msa-WN-DAA" appends="YES" id="wkK-LG-dYQ"/>
                             <outletCollection property="gestureRecognizers" destination="2Rx-35-xQD" appends="YES" id="wFb-IX-epx"/>
+                            <outletCollection property="gestureRecognizers" destination="agK-JJ-f4X" appends="YES" id="4Uq-Em-5nl"/>
                         </connections>
                     </view>
                     <connections>
                         <outlet property="gameView" destination="TlW-h5-kT1" id="BoL-dj-ezW"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="goMenu" id="McB-cf-oRc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FHB-aV-Ny1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -274,9 +276,17 @@
                         <action selector="swipeGesture:" destination="N8R-Kv-3le" id="VP4-Px-qMM"/>
                     </connections>
                 </swipeGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="agK-JJ-f4X">
+                    <connections>
+                        <action selector="pauseGameTap:" destination="N8R-Kv-3le" id="o4q-iK-2Zc"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2055" y="427"/>
+            <point key="canvasLocation" x="2001" y="-329"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="dBW-bx-Lel"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>

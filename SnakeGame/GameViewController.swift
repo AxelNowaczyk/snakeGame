@@ -11,7 +11,7 @@ import UIKit
 class GameViewController: UIViewController {
     
     @IBOutlet var gameView: UIView!
-    let snakeGame   = SnakeGame()
+    var snakeGame   = SnakeGame()
     var cells       = [[UIView]]()
     
     var cellSize: CGSize{
@@ -33,35 +33,62 @@ class GameViewController: UIViewController {
             cells.append(col)
         }
     }
-    private func colorBoard(){
+    private func drawBoard(){
         for x in 0..<cells.count{
             for y in 0..<cells[x].count{
                 cells[x][y].backgroundColor = UIColor.greenColor()
             }
         }
     }
-    private func colorFood(){
-        for i in snakeGame.food{
-            cells[i.0][i.1].backgroundColor = UIColor.redColor()
+    private func drawFood(){
+        for i in 0..<snakeGame.foodCount{
+            let food = snakeGame.getFood(i)
+            cells[food.x][food.y].backgroundColor = UIColor.redColor()
         }
     }
-    private func colorSnake(){
-        for i in snakeGame.shape{
-            cells[i.0][i.1].backgroundColor = UIColor.blackColor()
+    private func drawSnake(){
+        for i in 0..<snakeGame.snakeShapeCount{
+            let snakePart = snakeGame.getSnakeShape(i)
+            cells[snakePart.x][snakePart.y].backgroundColor = UIColor.blackColor()
         }
     }
-
+    private struct Segues{
+        static let menu = "goMenu"
+    }
     func oneLoop(){
         snakeGame.move()
         update()
         if snakeGame.snakeBitesHimself{
             timer.invalidate()
+            var msg = "Game Over \n your result: \(SnakeGame.score)"
+            if SnakeGame.score > Settings.bestScore{
+                msg+="\n This is the best Score EVER"
+                Settings.bestScore = SnakeGame.score
+                Settings.save(Settings.Saveable.BestScore)
+            }
+            let alert = UIAlertController(title: "", message: msg
+                , preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Menu",
+                            style: UIAlertActionStyle.Default,handler: { action in
+                            self.performSegueWithIdentifier(Segues.menu, sender: self) }))
+            alert.addAction(UIAlertAction(title: "Play Again",
+                            style: UIAlertActionStyle.Default,handler: statrNewGame))
+            
+            self.presentViewController(alert, animated: true, completion: nil)
         }
     }
+    func statrNewGame(alert: UIAlertAction!){
+        snakeGame = SnakeGame()
+        update()
+        gameLoop()
+    }
+    func continueGame(alert: UIAlertAction!){
+        gameLoop()
+    }
     private func update(){
-        colorBoard()
-        colorSnake()
-        colorFood()
+        drawBoard()
+        drawSnake()
+        drawFood()
     }
     private struct SwipeGestures{
         static let right    = 1
@@ -85,6 +112,18 @@ class GameViewController: UIViewController {
         createCells()
         update()
         gameLoop()
+    }
+    @IBAction func pauseGameTap(sender: AnyObject) {
+        timer.invalidate()
+        let alert = UIAlertController(title: "Pause", message: nil
+            , preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Menu",
+            style: UIAlertActionStyle.Default,handler: { action in
+                self.performSegueWithIdentifier(Segues.menu, sender: self) }))
+        alert.addAction(UIAlertAction(title: "Continue",
+            style: UIAlertActionStyle.Default,handler: continueGame))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {

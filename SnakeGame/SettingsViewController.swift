@@ -35,8 +35,10 @@ class SettingsViewController: UIViewController {
         switch sender.tag {
         case SliderTags.diffLvl:
             Settings.difficultyLvl  = Int(round(sender.value*scale))
+            Settings.save(Settings.Saveable.DiffLvl)
         case SliderTags.speed:
             Settings.speed          = Int(round(sender.value*scale*2))
+            Settings.save(Settings.Saveable.Speed)
         default: break
         }
     }
