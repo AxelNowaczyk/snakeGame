@@ -66,6 +66,7 @@ class GameViewController: UIViewController {
                 Settings.bestScore = SnakeGame.score
                 Settings.save(Settings.Saveable.BestScore)
             }
+            SnakeGame.score = 0
             let alert = UIAlertController(title: "", message: msg
                 , preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Menu",

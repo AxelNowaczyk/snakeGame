@@ -81,9 +81,9 @@ class Snake{
     var dirOfMovement = Direction.North
     var shape = [Square]()
     init(){
-        shape.append(Square(x: Settings.widthOfBoard/2,y: Settings.heightOfBoard/2-1))
-        shape.append(Square(x: Settings.widthOfBoard/2,y: Settings.heightOfBoard/2))
-        shape.append(Square(x: Settings.widthOfBoard/2,y: Settings.heightOfBoard/2+1))
+        for height in (Settings.heightOfBoard/2-1)...(Settings.heightOfBoard/2+1){
+            shape.append(Square(x: Settings.widthOfBoard/2,y: height))
+        }
     }
     var bitesHimself: Bool{
         for shp in 0..<shape.count{
