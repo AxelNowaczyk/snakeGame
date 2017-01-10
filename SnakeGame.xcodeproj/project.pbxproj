@@ -7,19 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A07208D1E256FFE00626C3F /* DataAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A07208C1E256FFE00626C3F /* DataAdapter.swift */; };
+		7A07208F1E25705A00626C3F /* DataServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A07208E1E25705A00626C3F /* DataServices.swift */; };
+		7A0720911E2570D800626C3F /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0720901E2570D800626C3F /* SettingsManager.swift */; };
 		7A14F5941CB6ED9B00778760 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A14F5931CB6ED9B00778760 /* AppDelegate.swift */; };
 		7A14F5961CB6ED9B00778760 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A14F5951CB6ED9B00778760 /* GameViewController.swift */; };
 		7A14F5991CB6ED9B00778760 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A14F5971CB6ED9B00778760 /* Main.storyboard */; };
 		7A14F59B1CB6ED9B00778760 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A14F59A1CB6ED9B00778760 /* Assets.xcassets */; };
 		7A14F59E1CB6ED9B00778760 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A14F59C1CB6ED9B00778760 /* LaunchScreen.storyboard */; };
 		7A14F5A61CB6EDCD00778760 /* SnakeGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A14F5A51CB6EDCD00778760 /* SnakeGame.swift */; };
-		7A14F5A81CB6F8BD00778760 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A14F5A71CB6F8BD00778760 /* ViewController.swift */; };
+		7A14F5A81CB6F8BD00778760 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A14F5A71CB6F8BD00778760 /* MenuViewController.swift */; };
 		7A1687F51CB7DEB30081CBBF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1687F41CB7DEB30081CBBF /* SettingsViewController.swift */; };
-		7AC229861CBD867A0067618C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7AC229851CBD867A0067618C /* .gitignore */; };
-		7AC229881CBD86E60067618C /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 7AC229871CBD86E60067618C /* LICENSE */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7A07208C1E256FFE00626C3F /* DataAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataAdapter.swift; path = Adapters/DataAdapter.swift; sourceTree = "<group>"; };
+		7A07208E1E25705A00626C3F /* DataServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataServices.swift; path = Services/DataServices.swift; sourceTree = "<group>"; };
+		7A0720901E2570D800626C3F /* SettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsManager.swift; path = Models/SettingsManager.swift; sourceTree = "<group>"; };
 		7A14F5901CB6ED9B00778760 /* SnakeGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnakeGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A14F5931CB6ED9B00778760 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A14F5951CB6ED9B00778760 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -28,10 +32,8 @@
 		7A14F59D1CB6ED9B00778760 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A14F59F1CB6ED9B00778760 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A14F5A51CB6EDCD00778760 /* SnakeGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnakeGame.swift; sourceTree = "<group>"; };
-		7A14F5A71CB6F8BD00778760 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7A14F5A71CB6F8BD00778760 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		7A1687F41CB7DEB30081CBBF /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		7AC229851CBD867A0067618C /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		7AC229871CBD86E60067618C /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,11 +47,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A0720881E256AA700626C3F /* Suppoerting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7A14F5931CB6ED9B00778760 /* AppDelegate.swift */,
+				7A14F59F1CB6ED9B00778760 /* Info.plist */,
+			);
+			name = "Suppoerting Files";
+			sourceTree = "<group>";
+		};
+		7A0720891E256AC100626C3F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7A0720901E2570D800626C3F /* SettingsManager.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		7A07208A1E256ACF00626C3F /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				7A14F5971CB6ED9B00778760 /* Main.storyboard */,
+				7A14F59C1CB6ED9B00778760 /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		7A07208B1E256FA200626C3F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				7A07208E1E25705A00626C3F /* DataServices.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
 		7A14F5871CB6ED9B00778760 = {
 			isa = PBXGroup;
 			children = (
-				7AC229851CBD867A0067618C /* .gitignore */,
-				7AC229871CBD86E60067618C /* LICENSE */,
 				7A14F5921CB6ED9B00778760 /* SnakeGame */,
 				7A14F5911CB6ED9B00778760 /* Products */,
 			);
@@ -66,15 +100,16 @@
 		7A14F5921CB6ED9B00778760 /* SnakeGame */ = {
 			isa = PBXGroup;
 			children = (
-				7A14F5931CB6ED9B00778760 /* AppDelegate.swift */,
+				7A07208A1E256ACF00626C3F /* Storyboards */,
+				7A0720891E256AC100626C3F /* Models */,
+				7A0720881E256AA700626C3F /* Suppoerting Files */,
 				7A14F5951CB6ED9B00778760 /* GameViewController.swift */,
-				7A14F5A71CB6F8BD00778760 /* ViewController.swift */,
+				7A07208C1E256FFE00626C3F /* DataAdapter.swift */,
+				7A07208B1E256FA200626C3F /* Services */,
+				7A14F5A71CB6F8BD00778760 /* MenuViewController.swift */,
 				7A1687F41CB7DEB30081CBBF /* SettingsViewController.swift */,
 				7A14F5A51CB6EDCD00778760 /* SnakeGame.swift */,
-				7A14F5971CB6ED9B00778760 /* Main.storyboard */,
 				7A14F59A1CB6ED9B00778760 /* Assets.xcassets */,
-				7A14F59C1CB6ED9B00778760 /* LaunchScreen.storyboard */,
-				7A14F59F1CB6ED9B00778760 /* Info.plist */,
 			);
 			path = SnakeGame;
 			sourceTree = "<group>";
@@ -111,6 +146,8 @@
 				TargetAttributes = {
 					7A14F58F1CB6ED9B00778760 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = GC6LWCHE7K;
+						LastSwiftMigration = 0820;
 					};
 				};
 			};
@@ -137,11 +174,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7AC229861CBD867A0067618C /* .gitignore in Resources */,
 				7A14F59E1CB6ED9B00778760 /* LaunchScreen.storyboard in Resources */,
 				7A14F59B1CB6ED9B00778760 /* Assets.xcassets in Resources */,
 				7A14F5991CB6ED9B00778760 /* Main.storyboard in Resources */,
-				7AC229881CBD86E60067618C /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,10 +188,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A14F5A61CB6EDCD00778760 /* SnakeGame.swift in Sources */,
+				7A07208F1E25705A00626C3F /* DataServices.swift in Sources */,
 				7A14F5961CB6ED9B00778760 /* GameViewController.swift in Sources */,
-				7A14F5A81CB6F8BD00778760 /* ViewController.swift in Sources */,
+				7A14F5A81CB6F8BD00778760 /* MenuViewController.swift in Sources */,
+				7A0720911E2570D800626C3F /* SettingsManager.swift in Sources */,
 				7A1687F51CB7DEB30081CBBF /* SettingsViewController.swift in Sources */,
 				7A14F5941CB6ED9B00778760 /* AppDelegate.swift in Sources */,
+				7A07208D1E256FFE00626C3F /* DataAdapter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,10 +307,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = GC6LWCHE7K;
 				INFOPLIST_FILE = SnakeGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.axlpl.SnakeGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -280,10 +320,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = GC6LWCHE7K;
 				INFOPLIST_FILE = SnakeGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.axlpl.SnakeGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

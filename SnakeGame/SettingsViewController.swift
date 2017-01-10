@@ -18,27 +18,27 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bestScoreLabel.text = "\(Settings.bestScore)"
-        diffLvlSlider.value = Float(Settings.difficultyLvl)/scale
-        speedSlider.value   = Float(Settings.speed)/(scale*2)
+        bestScoreLabel.text = "\(SettingsManager.bestScore)"
+        diffLvlSlider.value = Float(SettingsManager.difficultyLvl)/scale
+        speedSlider.value   = Float(SettingsManager.speed)/(scale*2)
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidLoad()
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
-    private struct SliderTags{
+
+    fileprivate struct SliderTags{
         static let diffLvl  = 0
         static let speed    = 1
     }
     
-    @IBAction func useSlider(sender: UISlider) {
+    @IBAction func useSlider(_ sender: UISlider) {
         switch sender.tag {
         case SliderTags.diffLvl:
-            Settings.difficultyLvl  = Int(round(sender.value*scale))
-            Settings.save(Settings.Saveable.DiffLvl)
+            SettingsManager.difficultyLvl  = Int(round(sender.value*scale))
         case SliderTags.speed:
-            Settings.speed          = Int(round(sender.value*scale*2))
-            Settings.save(Settings.Saveable.Speed)
+            SettingsManager.speed          = Int(round(sender.value*scale*2))
         default: break
         }
     }

@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MenuViewController.swift
 //  SnakeGame
 //
 //  Created by Axel Nowaczyk on 07.04.2016.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MenuViewController: UIViewController {
     override func viewDidLoad() {
-        Settings.load()
+        
     }
 }
